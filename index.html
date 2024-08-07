@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dead cat $bounce on solana</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .gif-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gif-container img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Mobile styles */
+        @media only screen and (max-width: 767px) {
+            .gif-container img {
+                width: 100%;
+                height: 50%;
+                object-fit: cover; /* Stretches the image while maintaining aspect ratio */
+            }
+        }
+
+        /* PC styles */
+        @media only screen and (min-width: 768px) {
+            .gif-container {
+                height: 100%;
+                width: auto;
+            }
+
+            .gif-container img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        .menu {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu button {
+            background-color: #fff;
+            border: none;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+
+        .menu button:hover {
+            background-color: #ddd;
+        }
+
+        .menu button:active {
+            background-color: #ccc;
+        }
+
+        .menu button i {
+            font-size: 20px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="gif-container">
+        <img id="random-gif-1" src="" alt="Random GIF 1">
+        <img id="random-gif-2" src="" alt="Random GIF 2">
+    </div>
+    <div class="menu">
+        <button onclick="window.open('https://twitter.com', '_blank')"><i class="fab fa-twitter"></i></button>
+        <button onclick="window.open('https://telegram.org', '_blank')"><i class="fab fa-telegram-plane"></i></button>
+        <button onclick="alert('Buy button clicked!')"><i class="fas fa-shopping-cart"></i></button>
+    </div>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/21eb7310f2.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Array of GIF filenames
+        const gifArray = ['bounce.gif', 'bounce2.gif', 'bounce3.gif', 'bounce4.gif', 'bounce5.gif'];
+
+        // Function to get a random GIF from the array
+        function getRandomGif(excludeIndex = -1) {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * gifArray.length);
+            } while (randomIndex === excludeIndex);
+            return gifArray[randomIndex];
+        }
+
+        // Set the src of the img elements to random GIFs
+        const gif1 = getRandomGif();
+        document.getElementById('random-gif-1').src = gif1;
+        const gif2 = getRandomGif(gifArray.indexOf(gif1)); // Ensure two different GIFs
+        document.getElementById('random-gif-2').src = gif2;
+
+        // Hide the second GIF on PC view
+        if (window.innerWidth >= 768) {
+            document.getElementById('random-gif-2').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
