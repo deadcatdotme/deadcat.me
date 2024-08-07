@@ -36,7 +36,7 @@
             .gif-container img {
                 width: 100%;
                 height: 50%;
-                object-fit: cover; /* Stretches the image while maintaining aspect ratio */
+                object-fit: cover; 
             }
         }
 
@@ -98,17 +98,18 @@
     <div class="menu">
         <button onclick="window.open('https://twitter.com', '_blank')"><i class="fab fa-twitter"></i></button>
         <button onclick="window.open('https://telegram.org', '_blank')"><i class="fab fa-telegram-plane"></i></button>
-        <button onclick="alert('Buy button clicked!')"><i class="fas fa-shopping-cart"></i></button>
+        <button onclick="window.open('https://pump.fun', '_blank')"><i class="fas fa-capsules"></i></button>
+        <button onclick="window.open('https://dexscreener.com', '_blank')"><i class="fas fa-chart-line"></i></button>
     </div>
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/21eb7310f2.js" crossorigin="anonymous"></script>
 
     <script>
-        // Array of GIF filenames
+        
         const gifArray = ['bounce.gif', 'bounce2.gif', 'bounce3.gif', 'bounce4.gif', 'bounce5.gif'];
 
-        // Function to get a random GIF from the array
+        
         function getRandomGif(excludeIndex = -1) {
             let randomIndex;
             do {
@@ -117,13 +118,13 @@
             return gifArray[randomIndex];
         }
 
-        // Set the src of the img elements to random GIFs
+        
         const gif1 = getRandomGif();
         document.getElementById('random-gif-1').src = gif1;
-        const gif2 = getRandomGif(gifArray.indexOf(gif1)); // Ensure two different GIFs
+        const gif2 = getRandomGif(gifArray.indexOf(gif1)); 
         document.getElementById('random-gif-2').src = gif2;
 
-        // Hide the second GIF on PC view
+        
         if (window.innerWidth >= 768) {
             document.getElementById('random-gif-2').style.display = 'none';
         }
